@@ -30,6 +30,8 @@ public class Teacher {
     public String toString() {
         return "Teacher{id='" + id +
                 "',fname='" + fname + "',lname='" + lname +
-                "',department='" + department.getDepartmentName() + "'}";
+                (department != null
+                ? "',department='" + department.getDepartmentName() + "'}"
+                : "'}");
     }
 }
