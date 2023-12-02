@@ -26,9 +26,10 @@ public class Teacher {
         this.department = department;
         id = String.format("T%03d", nextId++);
     }
-
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        return "Teacher{id='" + id +
+                "',fname='" + fname + "',lname='" + lname +
+                "',department='" + department.getDepartmentName() + "'}";
     }
 }

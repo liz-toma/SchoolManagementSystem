@@ -35,6 +35,18 @@ public class Course {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        String studentsStr = "[";
+        for (Student student : students) {
+            if (student != null) {
+                studentsStr += student + ", ";
+            }
+        }
+        studentsStr += "]";
+        return "Course{id='" + id +
+                "',courseName='" + courseName +
+                "',credit='" + credit +
+                "',teacher=" + teacher +
+                "',department=" + department +
+                ",students=" + studentsStr + '}';
     }
 }
