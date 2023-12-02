@@ -49,8 +49,7 @@ public class SchoolManagementSystem {
         if (departmentNum < MAX_DEPARTMENT_NUM) {
             departments[departmentNum] = new Department(departmentName);
             System.out.println(departments[departmentNum++] + " added successfully.");
-        }
-        else {
+        } else {
             System.out.println("Max department reached, add a new department failed.");
         }
     }
@@ -66,11 +65,11 @@ public class SchoolManagementSystem {
         if (studentNum < MAX_STUDENT_NUM) {
             students[studentNum] = new Student(fname, lname, findDepartment(departmentId));
             System.out.println(students[studentNum++] + " added successfully.");
-        }
-        else {
+        } else {
             System.out.println("Max student reached, add a new student failed.");
         }
     }
+
     /**
      * Add a new teacher to teachers
      *
@@ -82,8 +81,7 @@ public class SchoolManagementSystem {
         if (teacherNum < MAX_TEACHER_NUM) {
             teachers[teacherNum] = new Teacher(fname, lname, findDepartment(departmentId));
             System.out.println(teachers[teacherNum++] + " added successfully.");
-        }
-        else {
+        } else {
             System.out.println("Max teacher reached, add a new teacher failed.");
         }
     }
@@ -99,8 +97,7 @@ public class SchoolManagementSystem {
         if (courseNum < MAX_COURSE_NUM) {
             courses[courseNum] = new Course(courseName, credit, findDepartment(departmentId));
             System.out.println(courses[courseNum++] + " added successfully.");
-        }
-        else {
+        } else {
             System.out.println("Max course reached, add a new course failed.");
         }
     }
@@ -232,7 +229,16 @@ public class SchoolManagementSystem {
      * @param courseId  the course's id
      */
     public void modifyCourseTeacher(String teacherId, String courseId) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        Teacher teacher = findTeacher(teacherId);
+        Course course = findCourse(courseId);
+        if (course == null) {
+            System.out.printf("Cannot find any course match with courseId %s, modify teacher %s for course %s failed.%n", courseId, teacherId, courseId);
+        } else if (teacher == null) {
+            System.out.printf("Cannot find any teacher match with teacherId %s, modify teacher %s for course %s failed.%n", teacherId, teacherId, courseId);
+        } else {
+            course.setTeacher(teacher);
+            System.out.println(course + " teacher info updated successfully.");
+        }
     }
 
     /**
