@@ -46,7 +46,7 @@ public class SchoolManagementSystem {
      * @param departmentName the name of the department
      */
     public void addDepartment(String departmentName) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        departments[departmentNum++] = new Department(departmentName);
     }
 
     /**
@@ -57,7 +57,7 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the student's department
      */
     public void addStudent(String fname, String lname, String departmentId) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        students[studentNum++] = new Student(fname, lname, findDepartment(departmentId));
     }
 
     /**
@@ -68,7 +68,7 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the teacher's department
      */
     public void addTeacher(String fname, String lname, String departmentId) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        teachers[teacherNum++] = new Teacher(fname, lname, findDepartment(departmentId));
     }
 
     /**
@@ -79,7 +79,7 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the course's department
      */
     public void addCourse(String courseName, double credit, String departmentId) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        courses[courseNum++] = new Course(courseName, credit, findDepartment(departmentId));
     }
 
     /**
@@ -117,7 +117,13 @@ public class SchoolManagementSystem {
      * @return the department
      */
     public Department findDepartment(String departmentId) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        for (Department department : departments) {
+            if (department != null && department.getId().equals(departmentId)) {
+                return department;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -127,7 +133,13 @@ public class SchoolManagementSystem {
      * @return the teacher
      */
     public Teacher findTeacher(String teacherId) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        for (Teacher teacher : teachers) {
+            if (teacher != null && teacher.getId().equals(teacherId)) {
+                return teacher;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -137,7 +149,13 @@ public class SchoolManagementSystem {
      * @return the course
      */
     public Course findCourse(String courseId) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        for (Course course : courses) {
+            if (course != null && course.getId().equals(courseId)) {
+                return course;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -147,7 +165,13 @@ public class SchoolManagementSystem {
      * @return the student
      */
     public Student findStudent(String studentId) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        for (Student student : students) {
+            if (student != null && student.getId().equals(studentId)) {
+                return student;
+            }
+        }
+
+        return null;
     }
 
     /**
