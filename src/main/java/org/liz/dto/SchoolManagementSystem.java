@@ -96,7 +96,6 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the course's department
      */
     public void addCourse(String courseName, double credit, String departmentId) {
-        courses[courseNum++] = new Course(courseName, credit, findDepartment(departmentId));
         if (courseNum < MAX_COURSE_NUM) {
             courses[courseNum] = new Course(courseName, credit, findDepartment(departmentId));
             System.out.println(courses[courseNum++] + " added successfully.");
@@ -110,28 +109,56 @@ public class SchoolManagementSystem {
      * Display all departments in a school
      */
     public void printDepartments() {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        System.out.println("Displaying all departments:");
+        System.out.println("-------------------");
+
+        for (Department department : departments) {
+            if (department != null) {
+                System.out.println(department);
+            }
+        }
     }
 
     /**
      * Display all teachers in a school
      */
     public void printTeachers() {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        System.out.println("Displaying all teachers:");
+        System.out.println("-------------------");
+
+        for (Teacher teacher : teachers) {
+            if (teacher != null) {
+                System.out.println(teacher);
+            }
+        }
     }
 
     /**
      * Display all courses in a school
      */
     public void printCourses() {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        System.out.println("Displaying all courses:");
+        System.out.println("-------------------");
+
+        for (Course course : courses) {
+            if (course != null) {
+                System.out.println(course);
+            }
+        }
     }
 
     /**
      * Display all students in a school
      */
     public void printStudents() {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        System.out.println("Displaying all students:");
+        System.out.println("-------------------");
+
+        for (Student student : students) {
+            if (student != null) {
+                System.out.println(student);
+            }
+        }
     }
 
     /**
