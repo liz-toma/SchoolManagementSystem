@@ -46,7 +46,13 @@ public class SchoolManagementSystem {
      * @param departmentName the name of the department
      */
     public void addDepartment(String departmentName) {
-        departments[departmentNum++] = new Department(departmentName);
+        if (departmentNum < MAX_DEPARTMENT_NUM) {
+            departments[departmentNum] = new Department(departmentName);
+            System.out.println(departments[departmentNum++] + " added successfully.");
+        }
+        else {
+            System.out.println("Max department reached, add a new department failed.");
+        }
     }
 
     /**
@@ -57,9 +63,14 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the student's department
      */
     public void addStudent(String fname, String lname, String departmentId) {
-        students[studentNum++] = new Student(fname, lname, findDepartment(departmentId));
+        if (studentNum < MAX_STUDENT_NUM) {
+            students[studentNum] = new Student(fname, lname, findDepartment(departmentId));
+            System.out.println(students[studentNum++] + " added successfully.");
+        }
+        else {
+            System.out.println("Max student reached, add a new student failed.");
+        }
     }
-
     /**
      * Add a new teacher to teachers
      *
@@ -68,7 +79,13 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the teacher's department
      */
     public void addTeacher(String fname, String lname, String departmentId) {
-        teachers[teacherNum++] = new Teacher(fname, lname, findDepartment(departmentId));
+        if (teacherNum < MAX_TEACHER_NUM) {
+            teachers[teacherNum] = new Teacher(fname, lname, findDepartment(departmentId));
+            System.out.println(teachers[teacherNum++] + " added successfully.");
+        }
+        else {
+            System.out.println("Max teacher reached, add a new teacher failed.");
+        }
     }
 
     /**
@@ -80,6 +97,13 @@ public class SchoolManagementSystem {
      */
     public void addCourse(String courseName, double credit, String departmentId) {
         courses[courseNum++] = new Course(courseName, credit, findDepartment(departmentId));
+        if (courseNum < MAX_COURSE_NUM) {
+            courses[courseNum] = new Course(courseName, credit, findDepartment(departmentId));
+            System.out.println(courses[courseNum++] + " added successfully.");
+        }
+        else {
+            System.out.println("Max course reached, add a new course failed.");
+        }
     }
 
     /**
