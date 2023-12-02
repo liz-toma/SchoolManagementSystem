@@ -26,12 +26,17 @@ public class Teacher {
         this.department = department;
         id = String.format("T%03d", nextId++);
     }
+
+    public String getName() {
+        return fname + " " + lname;
+    }
+
     @Override
     public String toString() {
         return "Teacher{id='" + id +
                 "',fname='" + fname + "',lname='" + lname +
                 (department != null
-                ? "',department='" + department.getDepartmentName() + "'}"
-                : "'}");
+                        ? "',department='" + department.getDepartmentName() + "'}"
+                        : "'}");
     }
 }

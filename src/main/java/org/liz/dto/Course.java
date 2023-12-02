@@ -45,8 +45,12 @@ public class Course {
         return "Course{id='" + id +
                 "',courseName='" + courseName +
                 "',credit='" + credit +
-                "',teacher=" + teacher +
-                "',department=" + department +
-                ",students=" + studentsStr + '}';
+                (teacher != null
+                        ? "',teacher='" + teacher.getName()
+                        : "") +
+                (department != null
+                        ? "',department='" + department.getDepartmentName()
+                        : "") +
+                "',students=" + studentsStr + '}';
     }
 }
