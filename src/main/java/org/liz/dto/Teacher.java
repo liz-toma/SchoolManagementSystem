@@ -27,6 +27,11 @@ public class Teacher {
         id = String.format("T%03d", nextId++);
     }
 
+    /**
+     * Gets teacher's full name as a concatenation of the first name and last name
+     *
+     * @return the full name
+     */
     public String getName() {
         return fname + " " + lname;
     }

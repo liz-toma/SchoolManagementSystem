@@ -231,6 +231,7 @@ public class SchoolManagementSystem {
     public void modifyCourseTeacher(String teacherId, String courseId) {
         Teacher teacher = findTeacher(teacherId);
         Course course = findCourse(courseId);
+
         if (course == null) {
             System.out.printf("Cannot find any course match with courseId %s, modify teacher %s for course %s failed.%n", courseId, teacherId, courseId);
         } else if (teacher == null) {
@@ -248,6 +249,22 @@ public class SchoolManagementSystem {
      * @param courseId  the course's id
      */
     public void registerCourse(String studentId, String courseId) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        Student student = findStudent(studentId);
+        Course course = findCourse(courseId);
+
+        if (course == null) {
+            System.out.printf("Cannot find any course match with courseId %s, register course %s for student %s failed.%n", courseId, courseId, studentId);
+        } else if (student == null) {
+            System.out.printf("Cannot find any student match with studentId %s, register course %s for student %s failed.%n", studentId, courseId, studentId);
+        } else if (student.isCourseRegistered(courseId)) {
+            System.out.printf("Student %s has already registered course %s, register course %s for student %s failed.%n", studentId, courseId, courseId, studentId);
+        } else if (course.canAddStudent(studentId) && student.canAddCourse(courseId)) {
+            course.addStudent(student);
+            student.addCourse(course);
+
+            System.out.println("Student register course successfully.");
+            System.out.println("Latest student info: " + student);
+            System.out.println("Latest course info: " + course);
+        }
     }
 }

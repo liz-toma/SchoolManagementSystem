@@ -33,12 +33,37 @@ public class Course {
         id = String.format("C%03d", nextId++);
     }
 
+    /**
+     * Adds a student to students
+     *
+     * @param student the new student
+     * @return true if the student is added successfully, false otherwise
+     */
+    public void addStudent(Student student) {
+        students[studentNum++] = student;
+    }
+
+    /**
+     * Verifies if the new student can be added
+     *
+     * @param studentId the new student's id
+     * @return true if the student can be added, false otherwise
+     */
+    public boolean canAddStudent(String studentId) {
+        if (studentNum == MAX_STUDENT_NUM) {
+            System.out.printf("Course %s has been fully registered, register course %s for student %s failed.%n", id, id, studentId);
+            return false;
+        }
+
+        return true;
+    }
+
     @Override
     public String toString() {
         String studentsStr = "[";
         for (Student student : students) {
             if (student != null) {
-                studentsStr += student + ", ";
+                studentsStr += student.getName() + ", ";
             }
         }
         studentsStr += "]";
